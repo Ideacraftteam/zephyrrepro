@@ -20,15 +20,20 @@ This looks like a standard pattern to pull in a module. They then have some OS h
 The problem, when cmake prepares the build system, it errors out (see logs below).
 So my question is, have I missed something obvious. Or have Nordic done something with their SDK / Zephyr fork that adds some special sauce?
 
-To run this repro, create a new directory (e.g. zephyrrepro) and
+To run this repro:
 
 ```
-west init -m https://github.com/Ideacraftteam/zephyrrepro app
+west init -m https://github.com/Ideacraftteam/zephyrrepro zephyrrepro
+cd zephyrrepro
 west update
+```
+and build (example from my config, using the toolchain from the nordic SDK, but this shouldn't matter)
 
 ```
-and build.
-
+source ./zephyr/zephyr-env.sh
+export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb  
+export GNUARMEMB_TOOLCHAIN_PATH=/opt/nordic/ncs/v1.5.1/toolchain 
+```
 
 ## Error Logs
 
