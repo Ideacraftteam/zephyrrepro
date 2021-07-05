@@ -1,0 +1,48 @@
+manifest:
+  version: 0.9
+
+  remotes:
+
+    - name: ideacraft
+      url-base: https://github.com/ideacraftteam
+    - name: zephyrproject
+      url-base: https://github.com/zephyrproject-rtos
+    - name: nrf
+      url-base: https://github.com/nrfconnect
+
+  defaults:
+    remote: ideacraft
+
+  projects:
+
+    - name: zephyr
+      remote: zephyrproject
+      repo-path: zephyr
+      revision: v2.6.0
+      import:
+        name-whitelist:
+          - cmsis
+          - edtt
+          - fatfs
+          - hal_nordic
+          - libmetal
+          - littlefs
+          - lvgl
+          - mbedtls
+          - mcumgr
+          - mipi-sys-t
+          - net-tools
+          - nrf_hw_models
+          - openthread
+          - segger
+          - tinycbor
+
+    - name: cjson
+      revision: 50bddddf7fb45e4ce87bc3619df06db55d181856
+      remote: nrf
+      repo-path: sdk-cjson
+      path: modules/lib/cjson
+
+
+  self:
+    path: app

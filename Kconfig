@@ -1,0 +1,33 @@
+menu "Zephyr Kernel"
+source "Kconfig.zephyr"
+endmenu
+
+module = FLUIDD
+module-str = Fluidd Firmware
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
+
+module = OT_COAP_UTILS
+module-str = OpenThread CoAP utils
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
+
+config LOG
+	default y
+
+config LOG_PRINTK
+	default y
+
+config SPI
+	default y
+
+config I2C
+	default y
+
+config SENSOR_LOG_LEVEL
+	default 4
+
+config APPLICATION_WORKQUEUE_PRIORITY
+	int "Application workqueue priority"
+	default SYSTEM_WORKQUEUE_PRIORITY
+
+
+rsource “modules/Kconfig”

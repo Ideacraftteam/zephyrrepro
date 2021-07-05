@@ -1,0 +1,48 @@
+
+/ {
+	/*
+	* In some default configurations within the nRF Connect SDK,
+	* e.g. on nRF52840, the chosen zephyr,entropy node is &cryptocell.
+	* This devicetree overlay ensures that default is overridden wherever it
+	* is set, as this application uses the RNG node for entropy exclusively.
+	*/
+	chosen {
+		zephyr,entropy = &rng;
+	};
+
+};
+
+&i2c0 {
+    compatible = "nordic,nrf-twim";
+    status = "okay";
+    sda-pin = < 26 >;
+    scl-pin = < 27 >;
+    clock-frequency = <I2C_BITRATE_STANDARD>;
+
+    /* The I2C address could be one of two, here 0x76 is assumed */
+    /*
+    bme280@76 {
+        compatible = "bosch,bme280";
+        reg = <0x76>;
+        label = "BME280";
+    };
+    */
+
+    si7021@40{
+        compatible = "silabs,si7021", "sensirion,sht21", "silabs,si7006";
+        reg = <0x40>;
+        label = "Si7021";
+        status = "okay";
+    };
+};
+/*
+&i2c0 {
+	status = "okay";
+	si7021@40{
+		compatible = "silabs,si7006";
+		reg = <0x40>;
+		label = "Si7021";
+		status = "okay";
+	};
+};
+*/
