@@ -33,6 +33,8 @@ and build (example from my config, using the toolchain from the nordic SDK, but 
 source ./zephyr/zephyr-env.sh
 export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb  
 export GNUARMEMB_TOOLCHAIN_PATH=/opt/nordic/ncs/v1.5.1/toolchain 
+cd app
+west build -p -b nrf52840dk_nrf52840
 ```
 
 ## Error Logs
